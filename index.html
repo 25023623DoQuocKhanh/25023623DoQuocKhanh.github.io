@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân - Đỗ Quốc Khánh - Kỹ thuật Robot UET</title>
+    <!-- Nhúng font chữ công nghệ hiện đại -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Cài đặt gốc - Phong cách Đại Dương Công Nghệ Hiện Đại */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            color: #1e293b;
+            background-color: #f1f5f9; 
+        }
+        
+        /* Tiêu đề dùng font Lexend mạnh mẽ */
+        h1, h2, h3, nav a {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        /* KHUNG HEADER TRẮNG ĐỂ HÒA QUYỆN LOGO */
+        header {
+            background: #ffffff; 
+            color: #0f172a;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        /* Bố cục chứa Tên, Logo và Menu */
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+        }
+
+        /* KHU VỰC LOGO UET VÀ TÊN */
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px; 
+        }
+        
+        .logo-img {
+            height: 42px; 
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); 
+        }
+        
+        .logo-name {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #0f172a; 
+            letter-spacing: 0.5px;
+        }
+
+        /* Cụm Menu bên phải */
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: #475569; 
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            color: #0284c7; 
+            transform: translateY(-1px);
+        }
+
+        /* Các phần nội dung */
+        section {
+            padding: 110px 20px 60px; 
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0f172a;
+            font-size: 2.2rem;
+            position: relative;
+            margin-bottom: 45px;
+            letter-spacing: -0.5px;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 5px;
+            background: #0284c7;
+            margin: 12px auto 0;
+            border-radius: 10px;
+        }
+
+        /* KHUNG CHỮ ĐƯỢC TRANG TRÍ MÀU XANH DƯƠNG NHẠT CAO CẤP */
+        .intro-box {
+            background: #e0f2fe; 
+            padding: 40px;
+            border-radius: 24px; 
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.05), inset 0 1px 2px rgba(255,255,255,0.6);
+            border: 1px solid #bae6fd; 
+        }
+        
+        .intro-box h3 {
+            color: #0369a1;
+            margin-top: 0;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        /* Bố cục chia cột cho phần Giới thiệu có Ảnh */
+        .intro-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .intro-text {
+            flex: 1;
+        }
+
+        /* Khu vực chứa ảnh cá nhân */
+        .intro-images {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .intro-images img {
+            width: 100%;
+            max-width: 280px; 
+            border-radius: 18px;
+            box-shadow: 0 12px 30px rgba(2, 132, 199, 0.15);
+            border: 6px solid #ffffff;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .intro-images img:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 35px rgba(2, 132, 199, 0.25);
+            border-color: #f0f9ff;
+        }
+
+        /* Tối ưu chia cột trên giao diện Máy tính (Desktop) */
+        @media (min-width: 992px) {
+            .intro-flex {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 50px;
+            }
+            .intro-text {
+                flex: 1.6; 
+            }
+            .intro-images {
+                flex: 1;
+                flex-direction: column; 
+            }
+        }
+
+        /* Khu vực hiển thị sở thích (Hobby Grid) */
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0 25px 0;
+        }
+        .hobby-item {
+            background: rgba(255, 255, 255, 0.85); 
+            padding: 18px;
+            border-radius: 16px;
+            border-left: 5px solid #0284c7;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.03);
+            transition: all 0.3s ease;
+        }
+        .hobby-item:hover {
+            transform: translateY(-3px);
+            background: #ffffff;
+        }
+
+        /* Khung Danh mục sản phẩm số */
+        .danh-muc-box {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.08);
+            margin-top: 50px; 
+            border: 1px solid #e2e8f0;
+            border-left: 8px solid #0284c7;
+        }
+        .danh-muc-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+        }
+        .danh-muc-list {
+            list-style: none;
+            padding: 0 20px;
+            margin: 0;
+            font-size: 1.15rem;
+            color: #1e293b;
+            line-height: 1.8;
+        }
+        .danh-muc-list li {
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+        .danh-muc-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .danh-muc-list em {
+            font-style: italic;
+            color: #0369a1;
+        }
+
+        /* Lưới dự án kiểu Thẻ Sóng Biển */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid #e2e8f0;
+            border-top: 6px solid #0284c7;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(2, 132, 199, 0.12);
+            border-top: 6px solid #f59e0b; 
+            border-color: #bae6fd;
+        }
+        .card h3 {
+            color: #0f172a;
+            font-size: 1.25rem;
+            margin-top: 0;
+            height: 50px; 
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #475569;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #0284c7;
+            color: white;
+            padding: 11px 22px;
+            border: none;
+            border-radius: 12px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+        }
+        .btn:hover {
+            background: #0369a1;
+            box-shadow: 0 6px 16px rgba(3, 105, 161, 0.3);
+        }
+
+        /* CẤU TRÚC PHẦN TỔNG KẾT */
+        .summary-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+            border: 1px solid #e2e8f0;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .summary-row {
+                flex-direction: row;
+                align-items: stretch;
+            }
+        }
+
+        .summary-visual {
+            flex: 1;
+            min-width: 280px;
+            background: #fdfdfa; 
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid #f1f5f9;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
+        }
+
+        .visual-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.1rem;
+            color: #0369a1;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0284c7;
+            padding-bottom: 6px;
+        }
+
+        .summary-text {
+            flex: 1.3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 1.02rem;
+            color: #334155;
+            line-height: 1.8;
+            padding: 0 10px;
+        }
+
+        .roadmap-line {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 25px 0 15px;
+            padding: 0 10px;
+        }
+        .roadmap-line::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #cbd5e1;
+            z-index: 1;
+        }
+        .roadmap-dot {
+            width: 14px;
+            height: 14px;
+            background: #0d9488;
+            border-radius: 50%;
+            z-index: 2;
+            position: relative;
+        }
+        .roadmap-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #475569;
+            text-align: center;
+        }
+        .roadmap-labels span {
+            width: 16%;
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .phase-mini-card {
+            background: #0369a1;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.78rem;
+        }
+        .phase-mini-card.accent {
+            background: #0284c7;
+        }
+        .phase-mini-card h5 {
+            margin: 0 0 4px 0;
+            font-size: 0.85rem;
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .tech-avatar-box {
+            text-align: center;
+            padding: 10px;
+        }
+        .tech-avatar-box minibox {
+            display: inline-block;
+            background: #f0f9ff;
+            border: 2px dashed #0284c7;
+            padding: 15px;
+            border-radius: 12px;
+            color: #0369a1;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .chart-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chart-row {
+            display: flex;
+            align-items: center;
+            font-size: 0.75rem;
+        }
+        .chart-label {
+            width: 95px;
+            color: #0f172a;
+            font-weight: 500;
+        }
+        .chart-bar-bg {
+            flex: 1;
+            background: #e2e8f0;
+            height: 16px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background: #0d9488;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.65rem;
+        }
+
+        /* --- KHỐI TRẢI NGHIỆM VÀ CẢM NHẬN CÁ NHÂN --- */
+        .reflection-box {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.06);
+            border: 1px solid #e2e8f0;
+            margin-top: 10px;
+        }
+        .reflection-title {
+            color: #0f172a;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .reflection-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .reflection-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 25px;
+            color: #334155;
+            line-height: 1.75;
+            font-size: 1.05rem;
+        }
+        .reflection-list li:last-child {
+            margin-bottom: 0;
+        }
+        .reflection-list li::before {
+            content: '💡'; 
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 1.2rem;
+        }
+        .reflection-list strong {
+            color: #0369a1;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Khối Trích Dẫn Đúc Kết Toàn Diện Cuối Cùng */
+        .final-motto-box {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 35px;
+            border-radius: 20px;
+            border-left: 6px solid #f59e0b; 
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+        }
+        .final-motto-text {
+            font-style: italic;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin: 0;
+            text-align: justify;
+        }
+
+        /* Hệ thống xem PDF */
+        .pdf-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.75); 
+            backdrop-filter: blur(4px); 
+            display: none; 
+            justify-content: center;
+            align-items: center;
+            z-index: 2000; 
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .pdf-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-content {
+            background-color: #ffffff;
+            width: 85%;
+            height: 85%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: modalSlide 0.4s ease;
+        }
+        @keyframes modalSlide {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-header {
+            padding: 15px 25px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-title {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        .close-btn {
+            font-size: 2rem;
+            color: #64748b;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        .close-btn:hover {
+            color: #ef4444; 
+        }
+        .pdf-iframe {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Chân trang */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #0f172a;
+            color: #94a3b8;
+            margin-top: 80px;
+            font-size: 0.95rem;
+            border-top: 4px solid #e2e8f0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <!-- Đã sửa thành .jpg -->
+                <img src="logo_uet.jpg" alt="Logo UET" class="logo-img">
+                <span class="logo-name">Đỗ Quốc Khánh</span>
+            </div>
+            <nav>
+                <a href="#gioi-thieu">🌊 Giới thiệu</a>
+                <a href="#du-an">📂 Dự án & Bài tập</a>
+                <a href="#tong-ket">📝 Tổng kết</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PHẦN 1: TRANG GIỚI THIỆU -->
+    <section id="gioi-thieu">
+        <h2>Trang Giới Thiệu</h2>
+        <div class="intro-box">
+            <div class="intro-flex">
+                <div class="intro-text">
+                    <h3>Xin chào, mình là Đỗ Quốc Khánh 👋</h3>
+                    <p><strong>Ngành học:</strong> Kỹ thuật Robot — Khoa Điện tử Viễn thông, Trường Đại học Công nghệ (UET) - Đại học Quốc gia Hà Nội</p>
+                    
+                    <p><strong>🛠️ Sở thích & Điểm mạnh cá nhân:</strong></p>
+                    <div class="hobby-grid">
+                        <div class="hobby-item"><strong>⚽ Thể thao & Bóng đá:</strong> Đam mê rèn luyện thể chất, trong đó bóng đá là môn thể thao thế mạnh giúp mình nâng cao tinh thần đồng đội và phản xạ linh hoạt.</div>
+                        <div class="hobby-item"><strong>⚙️ Kỹ thuật & Máy móc:</strong> Có niềm đam mê lớn với việc mày mò, khám phá các hệ thống cơ khí, giải mã nguyên lý vận hành của máy móc tự động hóa.</div>
+                        <div class="hobby-item"><strong>🌱 Gắn kết & Sống trọn vẹn:</strong> Trân trọng những buổi ngồi tâm sự, chia sẻ sâu sắc cùng gia đình và bạn bè để thấu hiểu và gắn kết tình cảm.</div>
+                        <div class="hobby-item"><strong>✨ Yêu sự giản đơn:</strong> Hướng tới những giá trị bình dị, nhẹ nhàng trong cuộc sống, giúp bản thân luôn giữ được sự cân bằng và điềm tĩnh.</div>
+                    </div>
+
+                    <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 25px 0;">
+                    <p><strong>🚀 Định hướng phát triển cá nhân:</strong><br>
+                    Mình hướng tới mục tiêu trở thành một kỹ sư Kỹ thuật Robot toàn diện trong kỷ nguyên số. Để chuẩn bị cho hành trình đó, mình tập trung xây dựng nền tảng vững chắc về phần cứng cơ điện tử kết hợp tư duy lập trình điều khiển thông minh. Trong tương lai, mình muốn ứng dụng sâu các công nghệ mới như AI và IoT vào việc phát triển hệ thống robot tự hành, nhằm mang lại những giải pháp tự động hóa tối ưu, phục vụ thiết thực cho công nghiệp và đời sống.</p>
+                    
+                    <p><strong>🎯 Mục tiêu của Portfolio này:</strong><br>
+                    "Portfolio được xây dựng nhằm hệ thống hóa và lưu trữ trực quan các sản phẩm thực hành, qua đó chứng minh những kỹ năng số cốt lõi mình đã tích lũy trong môn học. Đây không chỉ là không gian chuyên nghiệp giúp chia sẻ kết quả học tập tới thầy cô, bạn bè mà còn là cơ hội để mình tự đánh giá năng lực công nghệ của bản thân. Những trải nghiệm thực tế từ dự án này sẽ là bệ phóng vững chắc giúp mình tự tin chinh phục các môn học chuyên ngành tiếp theo tại UET."</p>
+                </div>
+
+                <div class="intro-images">
+                    <img src="image_a8f7a4.jpg" alt="Đỗ Quốc Khánh - Phong cách">
+                    <img src="image_a8f7bf.jpg" alt="Đỗ Quốc Khánh - Cận cảnh">
+                </div>
+            </div>
+        </div>
+
+        <div class="danh-muc-box">
+            <h3 class="danh-muc-title">Danh mục sản phẩm số</h3>
+            <ul class="danh-muc-list">
+                <li>1 : Máy tính và các thiết bị ngoại vi ( <em>Quản lý tệp và thư mục</em> ) .</li>
+                <li>2 : Khai thác dữ liệu và thông tin ( <em>Tìm kiếm và đánh giá thông tin</em> ) .</li>
+                <li>3 : Tổng quan về trí tuệ nhân tạo ( <em>Viết Prompt hiệu quả</em> ) .</li>
+                <li>4 : Giao tiếp và hợp tác trong môi trường số ( <em>Hợp tác trực tuyến</em> ) .</li>
+                <li>5 : Sáng tạo nội dung số ( <em>Sáng tạo nội dung với AI</em> ) .</li>
+                <li>6 : An toàn và liêm chính học thuật trong môi trường số ( <em>Sử dụng AI có trách nhiệm</em> ) .</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PHẦN 2: TRANG DỰ ÁN -->
+    <section id="du-an">
+        <h2>Trang Dự Án & Bài Tập</h2>
+        <div class="grid-container">
+            
+            <div class="card">
+                <div>
+                    <h3>Bài 1: Máy tính và các thiết bị ngoại vi</h3>
+                    <p><strong>Mục tiêu:</strong> Làm chủ kiến trúc máy tính và cơ chế giao tiếp phần cứng.</p>
+                    <p><strong>Tóm tắt quá trình:</strong> Nghiên cứu sơ đồ khối của máy tính, liên hệ sâu sắc cách CPU xử lý dữ liệu đầu vào và điều khiển các thiết bị ngoại vi (liên hệ trực tiếp cảm biến và động cơ trong hệ thống Robot).</p>
+                </div>
+                <button type="button" class="btn" onclick="moXemPdf('Bài 1 - Bài tập 1.pdf', 'Bài 1: Máy tính và các thiết bị ngoại vi')">Xem sản phẩm</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Bài 2: Khai thác dữ liệu và thông tin</h3>
+                    <p><strong>Mục tiêu:</strong> Xây dựng bộ kỹ năng tìm kiếm nâng cao và quản lý dữ liệu số.</p>
+                    <p><strong>Tóm tắt quá trình:</strong> Thực hành sử dụng các cú pháp tìm kiếm nâng cao để khai thác tài liệu khoa học, tìm kiếm chính xác các thông số kỹ thuật (datasheet) của linh kiện điện tử trên môi trường Internet.</p>
+                </div>
+                <button type="button" class="btn" onclick="moXemPdf('Bài 2 - Bài tập 2.pdf', 'Bài 2: Khai thác dữ liệu và thông tin')">Xem sản phẩm</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Bài 3: Tổng quan về Trí tuệ nhân tạo</h3>
+                    <p><strong>Mục tiêu:</strong> Ứng dụng AI tạo sinh phục vụ học tập và nghiên cứu công nghệ.</p>
+                    <p><strong>Tóm tắt quá trình:</strong> Sử dụng các công cụ AI lớn (ChatGPT, Gemini) để tối ưu hóa quy trình gỡ lỗi code (debug), tìm ý tưởng giải thuật toán điều khiển và phân tích các xu hướng ứng dụng AI vào thị giác máy tính cho Robot.</p>
+                </div>
+                <button type="button" class="btn" onclick="moXemPdf('Bài 3 - Bài tập 2.pdf', 'Bài 3: Tổng quan về Trí tuệ nhân tạo')">Xem sản phẩm</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Bài 4: Giao tiếp và hợp tác trong môi trường số</h3>
+                    <p><strong>Mục tiêu:</strong> Phát triển kỹ năng làm việc nhóm từ xa dựa trên các nền tảng đám mây.</p>
+                    <p><strong>Tóm tắt quá trình:</strong> Phối hợp cùng các thành viên trong nhóm thiết lập không gian làm việc trực tuyến thông qua Google Workspace, phân chia task tiến độ rõ ràng để hoàn thành bài tập chung đạt hiệu quả tối ưu.</p>
+                </div>
+                <button type="button" class="btn" onclick="moXemPdf('Bài 4 - Bài tập 3.pdf', 'Bài 4: Giao tiếp và hợp tác trong môi trường số')">Xem sản phẩm</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Bài 5: Sáng tạo nội dung số</h3>
+                    <p><strong>Mục tiêu:</strong> Truyền tải kiến thức kỹ thuật thông qua các ấn phẩm truyền thông số.</p>
+                    <p><strong>Tóm tắt quá trình:</strong> Lên ý tưởng và sử dụng công cụ Canva để thiết kế infographic mô tả cấu trúc một hệ thống điều khiển tự động, đồng thời biên tập video ngắn giới thiệu mô phỏng hoạt động cơ học.</p>
+                </div>
+                <button type="button" class="btn" onclick="moXemPdf('Bài 5 - Bài tập 2.pdf', 'Bài 5: Sáng tạo nội dung số')">Xem sản phẩm</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Bài 6: An toàn và liêm chính học thuật</h3>
+                    <p><strong>Mục tiêu:</strong> Tuân thủ đạo đức công nghệ và bảo vệ an toàn thông tin cá nhân.</p>
+                    <p><strong>Tóm tắt quá trình:</strong> Nghiên cứu các quy định về luật sở hữu trí tuệ, thực hành trích dẫn nguồn tài liệu chuẩn IEEE trong các báo cáo kỹ thuật và áp dụng các phương thức bảo mật tài khoản cá nhân trên không gian số.</p>
+                </div>
+                <button type="button" class="btn" onclick="moXemPdf('Bài 6 - Bài tập 4.pdf', 'Bài 6: An toàn và liêm chính học thuật')">Xem sản phẩm</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PHẦN 3: TRANG TỔNG KẾT MỚI -->
+    <section id="tong-ket">
+        <h2>Tổng kết Hành trình làm chủ Công Nghệ</h2>
+        <h4 style="text-align:center; font-weight:500; color:#475569; margin-top:-30px; margin-bottom:40px;">
+            ( Môn học: Nhập môn công nghệ số và ứng dụng trí tuệ nhân tạo )
+        </h4>
+
+        <div class="summary-container">
+            
+            <!-- ROW 1: TỔNG QUAN LỘ TRÌNH -->
+            <div class="summary-row">
+                <div class="summary-visual">
+                    <p class="visual-title">Lộ trình 06 Bài học</p>
+                    <div class="roadmap-line">
+                        <div class="roadmap-dot"></div>
+                        <div class="roadmap-dot"></div>
+                        <div class="roadmap-dot"></div>
+                        <div class="roadmap-dot"></div>
+                        <div class="roadmap-dot"></div>
+                        <div class="roadmap-dot"></div>
+                    </div>
+                    <div class="roadmap-labels">
+                        <span>Bài 1<br><i style="font-size:0.6rem">Quản lý</i></span>
+                        <span>Bài 2<br><i style="font-size:0.6rem">Khai thác</i></span>
+                        <span>Bài 3<br><i style="font-size:0.6rem">Prompt AI</i></span>
+                        <span>Bài 4<br><i style="font-size:0.6rem">Cộng tác</i></span>
+                        <span>Bài 5<br><i style="font-size:0.6rem">Sáng tạo</i></span>
+                        <span>Bài 6<br><i style="font-size:0.6rem">Đạo đức</i></span>
+                    </div>
+                    <p style="text-align:center; font-size:0.65rem; color:#64748b; margin-top:20px; font-style:italic;">
+                        Một hành trình bứt phá từ quản trị tệp tin cơ bản đến tư duy công nghệ thông minh.
+                    </p>
+                </div>
+                <div class="summary-text">
+                    <p>Nhìn lại toàn bộ chặng đường đã qua, chuỗi 6 bài học không chỉ đơn thuần là việc tiếp thu lý thuyết, mà thực sự là một <strong>hành trình chuyển đổi tư duy số</strong> đầy mạnh mẽ. Khởi đầu từ việc chuẩn hóa hệ thống dữ liệu nhỏ nhất cho đến khi biết cách phối hợp nhịp nhàng cùng trí tuệ nhân tạo, mình đã tự tin làm chủ không gian số của bản thân.</p>
+                </div>
+            </div>
+
+            <!-- ROW 2: GIAI ĐOẠN 1 -->
+            <div class="summary-row">
+                <div class="summary-visual">
+                    <p class="visual-title">Chặng 1: Nền tảng & Tối ưu</p>
+                    <div class="phase-grid">
+                        <div class="phase-mini-card">
+                            <h5>Bài 1: Quản lý tệp</h5>
+                            <span style="font-size:0.65deg">Cấu trúc cây mục lục khoa học</span>
+                        </div>
+                        <div class="phase-mini-card accent">
+                            <h5>Bài 2: Khai thác TT</h5>
+                            <span style="font-size:0.65deg">Làm chủ các cú pháp tìm kiếm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-text">
+                    <p>Tại <strong>Bài học số 1</strong>, mình đã thiết lập được thói quen tổ chức và lưu trữ dữ liệu theo mô hình phân cấp hệ thống, giúp việc tìm kiếm tài liệu diễn ra tức thì. Bước sang <strong>Bài học số 2</strong>, các thuật toán tìm kiếm nâng cao của Google đã biến thành công cụ đắc lực, giúp mình chủ động sàng lọc thông tin rác và tiếp cận trực diện nguồn tài liệu học thuật chính thống.</p>
+                </div>
+            </div>
+
+            <!-- ROW 3: GIAI ĐOẠN 2 -->
+            <div class="summary-row">
+                <div class="summary-visual">
+                    <p class="visual-title">Chặng 2: Cộng tác & Trí tuệ</p>
+                    <div class="tech-avatar-box">
+                        <minibox>🧠 AI Prompt + Cloud Hub ☁️</minibox>
+                    </div>
+                    <p style="text-align:center; font-size:0.65rem; color:#64748b; margin-top:5px; font-style:italic;">
+                        Tối ưu cấu trúc câu lệnh - Kết nối không giới hạn
+                    </p>
+                </div>
+                <div class="summary-text">
+                    <p><strong>Bài học số 3</strong> mang lại bước ngoặt lớn khi mình nắm vững nghệ thuật viết Prompt Engineering để biến AI thành người trợ lý thông minh. Ngay sau đó, tại <strong>Bài học số 4</strong>, việc áp dụng hệ sinh thái đám mây Cloud linh hoạt đã giúp nhóm của mình phối hợp làm việc trơn tru, xóa bỏ hoàn toàn các rào cản về khoảng cách địa lý và thời gian.</p>
+                </div>
+            </div>
+
+            <!-- ROW 4: GIAI ĐOẠN 3 -->
+            <div class="summary-row">
+                <div class="summary-visual">
+                    <p class="visual-title">Chặng 3: Sáng tạo & Chuẩn mực</p>
+                    <div class="phase-grid">
+                        <div class="phase-mini-card accent">
+                            <h5>Bài 5: Sáng tạo Số</h5>
+                            <span style="font-size:0.65deg">Nguyên tắc giữ vững vai trò cốt lõi</span>
+                        </div>
+                        <div class="phase-mini-card">
+                            <h5>Bài 6: Đạo đức Số</h5>
+                            <span style="font-size:0.65deg">Minh bạch tài sản trí tuệ</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-text">
+                    <p>Trong <strong>Bài học số 5</strong>, quá trình thiết kế ấn phẩm số giúp mình thấu hiểu sâu sắc nguyên tắc <em>"Con người làm trung tâm"</em> – dùng công cụ công nghệ để gia tăng hiệu suất nhưng luôn làm chủ chất lượng sản phẩm cuối cùng. Điểm tựa vững chắc khép lại hành trình là <strong>Bài học số 6</strong>, nhắc nhở mình thượng tôn tính liêm chính học thuật và trách nhiệm đạo đức trước mọi giải pháp công nghệ tạo ra.</p>
+                </div>
+            </div>
+
+            <!-- ROW 5: BIỂU ĐỒ NĂNG LỰC CÁ NHÂN -->
+            <div class="summary-row">
+                <div class="summary-visual">
+                    <p class="visual-title">Đánh giá Năng lực Số</p>
+                    <div class="chart-wrapper">
+                        <div class="chart-row">
+                            <span class="chart-label">Quản trị dữ liệu</span>
+                            <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 95%;">95%</div></div>
+                        </div>
+                        <div class="chart-row">
+                            <span class="chart-label">Khai thác AI</span>
+                            <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 90%;">90%</div></div>
+                        </div>
+                        <div class="chart-row">
+                            <span class="chart-label">Sáng tạo nội dung</span>
+                            <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 85%;">85%</div></div>
+                        </div>
+                        <div class="chart-row">
+                            <span class="chart-label">Hợp tác trực tuyến</span>
+                            <div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 95%;">95%</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-text">
+                    <p>Hệ thống biểu đồ tăng trưởng bên cạnh phản ánh trung thực sự bứt phá về năng lực thực hành của bản thân. Từ một người tiếp cận công nghệ theo bản năng, mình đã biết cách phân tích, phản biện đa chiều và liên tục hiệu chỉnh đầu ra để sản phẩm luôn đạt tiêu chuẩn chuyên môn cao nhất.</p>
+                </div>
+            </div>
+
+            <!-- KHỐI MỚI: GÓC NHÌN VÀ TRẢI NGHIỆM CÁ NHÂN -->
+            <div class="reflection-box">
+                <h3 class="reflection-title">Góc nhìn & Trải nghiệm cá nhân</h3>
+                <ul class="reflection-list">
+                    <li><strong>Cảm nhận về quá trình thực hiện:</strong> Quá trình xây dựng Portfolio này thực sự là một trải nghiệm đáng nhớ. Lần đầu tiên, mình được tự tay thiết kế và cấu trúc một trang web cá nhân hoàn chỉnh từ con số không. Dù ban đầu còn nhiều bỡ ngỡ với các đoạn mã HTML/CSS, nhưng cảm giác nhìn thấy từng phần giao diện hiện lên đúng như ý tưởng của mình thật sự rất tuyệt vời và đầy tự hào.</li>
+                    <li><strong>Kiến thức và kỹ năng cốt lõi:</strong> Qua dự án này, mình không chỉ rèn luyện được tư duy logic trong việc phân cấp thông tin sao cho khoa học, trực quan, mà còn học được kỹ năng giải quyết vấn đề (troubleshooting) hiệu quả. Việc tìm tòi sửa từng lỗi hiển thị nhỏ đã giúp mình nâng cao đáng kể khả năng tự học và thích ứng nhanh với các công nghệ mới.</li>
+                    <li><strong>Điểm tâm đắc & Thách thức lớn nhất:</strong> Điểm mình tâm đắc nhất là việc tích hợp thành công tính năng xem trực tiếp file bài tập PDF ngay trên web, mang lại trải nghiệm mượt mà cho người xem. Tuy nhiên, thách thức lớn nhất là làm sao để giao diện vừa đẹp mắt, hiện đại lại vừa thể hiện đúng "chất" mạnh mẽ của dân kỹ thuật Robot. Quá trình căn chỉnh bố cục trên nhiều thiết bị đã ngốn khá nhiều thời gian, nhưng lại là bài học quý giá về sự tỉ mỉ.</li>
+                </ul>
+            </div>
+
+            <!-- KHỐI ĐÚC KẾT KHÉP LẠI -->
+            <div class="final-motto-box">
+                <p class="final-motto-text">
+                    "Khép lại học phần này hoàn toàn không phải là điểm kết thúc, mà chính là bước khởi đầu vững chắc để mình tự tin tiến sâu vào thế giới công nghệ chuyên ngành. Hành trang lớn nhất mình mang theo không chỉ là kỹ năng số, mà là tư duy học tập trọn đời cùng ý thức đạo đức công nghệ nghiêm túc. Tất cả sẽ tạo nên bệ phóng vững chắc để hướng tới mục tiêu trở thành một kỹ sư Robot toàn diện của UET: Vững vàng về chuyên môn phần cứng, sắc bén trong tư duy phần mềm thông minh và luôn có trách nhiệm cao với cộng đồng."
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- KHUNG XEM PDF TẠI CHỖ -->
+    <div id="khungXemPdf" class="pdf-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="tieuDePdf" class="modal-title">Nội dung bài tập</h4>
+                <span class="close-btn" onclick="dongXemPdf()">&times;</span>
+            </div>
+            <iframe id="trinhDocPdf" class="pdf-iframe" src=""></iframe>
+        </div>
+    </div>
+
+    <!-- Chân trang -->
+    <footer>
+        <p>© 2026 Bản quyền thuộc về Đỗ Quốc Khánh - Sinh viên Trường Đại học Công nghệ (UET) - ĐHQGHN</p>
+    </footer>
+
+    <!-- ĐOẠN JAVASCRIPT ĐIỀU KHIỂN BẬT/TẮT KHUNG XEM TẠI CHỖ -->
+    <script>
+        function moXemPdf(duongDanFile, tieuDeBaiHoc) {
+            var modal = document.getElementById('khungXemPdf');
+            var iframe = document.getElementById('trinhDocPdf');
+            var tieuDe = document.getElementById('tieuDePdf');
+            
+            tieuDe.innerText = tieuDeBaiHoc; 
+            iframe.src = duongDanFile;       
+            
+            modal.style.display = 'flex';    
+            setTimeout(function() {
+                modal.classList.add('show');
+            }, 10);
+        }
+
+        function dongXemPdf() {
+            var modal = document.getElementById('khungXemPdf');
+            var iframe = document.getElementById('trinhDocPdf');
+            
+            modal.classList.remove('show');
+            setTimeout(function() {
+                modal.style.display = 'none';
+                iframe.src = ''; 
+            }, 300);
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('khungXemPdf');
+            if (event.target == modal) {
+                dongXemPdf();
+            }
+        }
+    </script>
+
+</body>
+</html>
